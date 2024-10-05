@@ -16,11 +16,12 @@ import { UserContextProvider } from "./components/context/UserContext";
 import { Users } from "./components/context/User";
 import { DomRef } from "./components/ref/DomRef";
 import { MutableRef } from "./components/ref/MutableRef";
-import  { Counter } from "./components/class/Counter"
+import { Counter } from "./components/class/Counter";
 import { Private } from "./components/auth/Private";
 import { Profile } from "./components/auth/Profile";
-
-
+import { List } from "./components/generics/List";
+import { RandomNumber } from "./components/restriction/RandomNumber";
+import { Toast } from "./components/templateliterals/Toast";
 
 function App() {
   const PersonName = {
@@ -30,18 +31,24 @@ function App() {
 
   const nameList = [
     {
+      id: 1,
       first: "Obitect",
       last: "Nwankwo",
     },
     {
+      id: 2,
       first: "Tony",
       last: "Stark",
     },
     {
+      id: 3,
       first: "Steve",
       last: "Rogers",
     },
   ];
+
+  // const item = ['Official', 'Obitect', 'Nwankwo',]
+
   return (
     <>
       <div className="h-full bg-gradient-to-tr text-3xl text-center font-bold p-20 space-y-8 hover:text-white hover:italic via-slate-100 hover:via-slate-500 from-slate-100">
@@ -66,18 +73,34 @@ function App() {
         <User />
         <Counter1 />
 
-      <ThemeContextProvider>
-        <Box />
-      </ThemeContextProvider>
+        <ThemeContextProvider>
+          <Box />
+        </ThemeContextProvider>
 
-      <UserContextProvider>
-        <Users />
-      </UserContextProvider>
+        <UserContextProvider>
+          <Users />
+        </UserContextProvider>
 
-      <DomRef />
-      <MutableRef />
-      <Counter message="This is counter value"/>
-      <Private IsLoggedIn={false} component={Profile} />
+        <DomRef />
+        <MutableRef />
+        <Counter message="This is counter value" />
+        <Private IsLoggedIn={false} component={Profile} />
+        {/* <List
+          items={["Official", "Obitect", "Nwankwo"]}
+          handleClick={(item) => {
+            console.log("am clicked", item);
+          }}
+        /> */}
+
+        <List
+          items={nameList}
+          handleClick={(item) => {
+            console.log("am clicked", item);
+          }}
+        />
+
+        <RandomNumber value={10} isNegative />
+        <Toast position="center" />
       </div>
     </>
   );
