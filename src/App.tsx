@@ -22,6 +22,10 @@ import { Profile } from "./components/auth/Profile";
 import { List } from "./components/generics/List";
 import { RandomNumber } from "./components/restriction/RandomNumber";
 import { Toast } from "./components/templateliterals/Toast";
+import { CustomButton } from "./components/html/Button";
+import { CustomInput } from "./components/html/Input";
+import { CustomComponent } from "./components/html/CustomComponent";
+import { Test } from "./components/polymorphic/Test";
 
 function App() {
   const PersonName = {
@@ -101,6 +105,14 @@ function App() {
 
         <RandomNumber value={10} isNegative />
         <Toast position="center" />
+        <CustomButton variant="primary" onClick={() => console.log('Clicked')} >
+          Primary Button
+        </CustomButton>
+        <CustomInput />
+        <CustomComponent name='official' isLogging />
+        <Test as='h1' size="lg" >Heading</Test>
+        <Test as='p' size="md" >Paragraph</Test>
+        <Test as='label' htmlFor='someId' size="sm" color="primary" >Lable</Test>
       </div>
     </>
   );
